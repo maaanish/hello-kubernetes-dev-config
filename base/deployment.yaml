@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sundar-demo-app1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sundar-demo-app1
+  template:
+    metadata:
+      labels:
+        app: sundar-demo-app1
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: paulbouwer/hello-kubernetes:1.8
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MESSAGE
+          value: I just deployed this on Kubernetes using argocd 1.20!
